@@ -1,9 +1,1050 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Android Runing</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIRLS HOT STYLE | Modern Women's Fashion & Trend Wear</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        hotpink: {
+                            50: '#fff1f8',
+                            100: '#ffe4f3',
+                            200: '#fecddf',
+                            300: '#fea3c5',
+                            400: '#fc6aa0',
+                            500: '#f63d7e',
+                            600: '#e31b5f',
+                            700: '#c00f49',
+                            800: '#9f103d',
+                            900: '#841237',
+                        },
+                        darkbg: '#0f0f12',
+                        darkcard: '#18181c',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0f0f12;
+            color: #f3f4f6;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #18181c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f63d7e;
+            border-radius: 4px;
+        }
+        .glow-effect {
+            box-shadow: 0 0 25px rgba(246, 61, 126, 0.35);
+        }
+        .glow-text {
+            text-shadow: 0 0 12px rgba(246, 61, 126, 0.6);
+        }
+    </style>
 </head>
-<body>
-    <h1>Hello World! My Build Some Thing New.</h1>
+<body class="bg-darkbg min-h-screen flex flex-col justify-between selection:bg-hotpink-500 selection:text-white">
+
+    <!-- TOP PROMO BANNER -->
+    <div id="top-banner" class="bg-gradient-to-r from-hotpink-600 via-purple-600 to-hotpink-600 text-white text-xs md:text-sm py-2 px-4 text-center font-semibold tracking-wide flex justify-between items-center">
+        <div class="flex-1 text-center">
+            🔥 EXTRA 20% OFF SUMMER TRENDS - USE CODE: <span class="bg-black/40 px-2 py-0.5 rounded text-yellow-300 font-mono tracking-wider">HOT20</span> AT CHECKOUT!
+        </div>
+        <button onclick="document.getElementById('top-banner').style.display='none'" class="text-white/80 hover:text-white ml-2">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+
+    <!-- MAIN HEADER / NAVBAR -->
+    <header class="sticky top-0 z-40 bg-darkbg/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- BRAND LOGO -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="filterCategory('All')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-hotpink-500 to-purple-600 flex items-center justify-center shadow-lg shadow-hotpink-500/30">
+                        <i class="fa-solid fa-fire text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-extrabold tracking-tight text-white glow-text">GIRLS <span class="text-hotpink-500">HOT</span> STYLE</span>
+                        <span class="block text-[10px] tracking-widest text-gray-400 uppercase font-bold -mt-1">Women's Fashion Hub</span>
+                    </div>
+                </div>
+
+                <!-- DESKTOP CATEGORY NAV -->
+                <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                    <button onclick="filterCategory('All')" class="nav-cat-btn text-hotpink-400 font-semibold transition" data-cat="All">All</button>
+                    <button onclick="filterCategory('Tops')" class="nav-cat-btn text-gray-300 hover:text-hotpink-400 transition" data-cat="Tops">Tops</button>
+                    <button onclick="filterCategory('Dresses')" class="nav-cat-btn text-gray-300 hover:text-hotpink-400 transition" data-cat="Dresses">Dresses</button>
+                    <button onclick="filterCategory('Denim')" class="nav-cat-btn text-gray-300 hover:text-hotpink-400 transition" data-cat="Denim">Denim</button>
+                    <button onclick="filterCategory('Accessories')" class="nav-cat-btn text-gray-300 hover:text-hotpink-400 transition" data-cat="Accessories">Accessories</button>
+                    <button onclick="filterCategory('Sale')" class="nav-cat-btn text-hotpink-500 font-bold hover:text-hotpink-400 transition" data-cat="Sale">🔥 Sale</button>
+                </nav>
+
+                <!-- SEARCH BAR & UTILITIES -->
+                <div class="flex items-center gap-4">
+                    <!-- SEARCH INPUT -->
+                    <div class="relative hidden sm:block w-48 md:w-64">
+                        <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search trendy styles..." class="w-full bg-darkcard border border-gray-700 text-xs text-white rounded-full py-2.5 pl-9 pr-4 focus:outline-none focus:border-hotpink-500 transition">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-gray-400 text-xs"></i>
+                    </div>
+
+                    <!-- CURRENCY SWITCHER -->
+                    <select id="currencySelect" onchange="changeCurrency(this.value)" class="bg-darkcard text-xs text-gray-300 border border-gray-700 rounded-lg px-2 py-2 focus:outline-none focus:border-hotpink-500 cursor-pointer">
+                        <option value="USD">$ USD</option>
+                        <option value="EUR">€ EUR</option>
+                        <option value="GBP">£ GBP</option>
+                    </select>
+
+                    <!-- WISHLIST ICON -->
+                    <button onclick="toggleWishlistModal()" class="relative p-2 text-gray-300 hover:text-hotpink-500 transition">
+                        <i class="fa-regular fa-heart text-xl"></i>
+                        <span id="wishlist-badge" class="hidden absolute -top-1 -right-1 bg-hotpink-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                    </button>
+
+                    <!-- CART BUTTON -->
+                    <button onclick="toggleCart(true)" class="relative bg-hotpink-600 hover:bg-hotpink-500 text-white p-2.5 px-4 rounded-full flex items-center gap-2 font-semibold text-sm transition glow-effect">
+                        <i class="fa-solid fa-bag-shopping text-base"></i>
+                        <span class="hidden md:inline">Cart</span>
+                        <span id="cart-badge" class="bg-white text-hotpink-600 font-extrabold text-xs px-2 py-0.5 rounded-full">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- MOBILE SEARCH INPUT -->
+            <div class="pb-3 sm:hidden">
+                <div class="relative w-full">
+                    <input type="text" id="searchInputMobile" oninput="handleSearchMobile()" placeholder="Search trendy styles..." class="w-full bg-darkcard border border-gray-700 text-xs text-white rounded-full py-2 pl-9 pr-4 focus:outline-none focus:border-hotpink-500">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-gray-400 text-xs"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-darkcard via-darkbg to-purple-950/40 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            
+            <div class="space-y-6 z-10 text-center md:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-hotpink-500/10 border border-hotpink-500/30 text-hotpink-400 text-xs font-bold uppercase tracking-wider">
+                    <i class="fa-solid fa-bolt text-yellow-400"></i> New Collection Dropped
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+                    UNLEASH YOUR <span class="text-transparent bg-clip-text bg-gradient-to-r from-hotpink-400 via-purple-400 to-hotpink-500">BOLD & TRENDY</span> VIBE
+                </h1>
+                <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto md:mx-0">
+                    Discover high-fashion dresses, crop tops, streetwear, and statement denim designed for the modern fashionista. Step out in style every day.
+                </p>
+                <div class="flex flex-wrap items-center justify-center md:justify-start gap-4">
+                    <button onclick="scrollToCatalog()" class="bg-gradient-to-r from-hotpink-600 to-purple-600 hover:from-hotpink-500 hover:to-purple-500 text-white font-bold py-3.5 px-8 rounded-full shadow-lg glow-effect transition transform hover:-translate-y-0.5">
+                        Shop Trending Now <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </button>
+                    <button onclick="filterCategory('Sale')" class="border border-gray-700 hover:border-hotpink-500 text-gray-300 hover:text-white font-semibold py-3.5 px-6 rounded-full transition">
+                        View Hot Sales 🔥
+                    </button>
+                </div>
+            </div>
+
+            <!-- HERO IMAGE SHOWCASE -->
+            <div class="relative flex justify-center">
+                <div class="w-72 h-96 sm:w-80 sm:h-[26rem] lg:w-96 lg:h-[28rem] rounded-3xl overflow-hidden border-2 border-hotpink-500/30 shadow-2xl relative glow-effect transform rotate-1 hover:rotate-0 transition duration-500">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=800" alt="Hot Women Fashion" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkbg via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-darkcard/80 backdrop-blur-md border border-gray-700/50">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-hotpink-400 font-bold uppercase">Must Have</span>
+                                <p class="text-white font-bold text-sm">Neon Nights Party Mini Dress</p>
+                            </div>
+                            <span class="text-lg font-extrabold text-white" id="hero-price-tag">$49.99</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MAIN CATALOG CONTENT -->
+    <main id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 w-full">
+        
+        <div class="flex flex-col lg:flex-row gap-8">
+            
+            <!-- SIDEBAR FILTERS -->
+            <aside class="w-full lg:w-64 space-y-6 shrink-0">
+                <div class="bg-darkcard border border-gray-800 rounded-2xl p-6 space-y-6">
+                    
+                    <div class="flex justify-between items-center border-b border-gray-800 pb-4">
+                        <h3 class="font-bold text-white text-base flex items-center gap-2">
+                            <i class="fa-solid fa-sliders text-hotpink-500"></i> Filters
+                        </h3>
+                        <button onclick="resetFilters()" class="text-xs text-gray-400 hover:text-hotpink-400 underline">Reset All</button>
+                    </div>
+
+                    <!-- SORT BY -->
+                    <div class="space-y-2">
+                        <label class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Sort By</label>
+                        <select id="sortSelect" onchange="applyFilters()" class="w-full bg-darkbg border border-gray-700 text-xs text-white rounded-xl p-3 focus:outline-none focus:border-hotpink-500">
+                            <option value="featured">Featured / Trending</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="rating">Highest Rated</option>
+                        </select>
+                    </div>
+
+                    <!-- PRICE RANGE -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-xs font-semibold">
+                            <span class="text-gray-400 uppercase tracking-wider">Max Price</span>
+                            <span id="price-val" class="text-hotpink-400 font-bold">$150</span>
+                        </div>
+                        <input type="range" id="priceRange" min="20" max="150" value="150" oninput="applyFilters()" class="w-full accent-hotpink-500 cursor-pointer">
+                    </div>
+
+                    <!-- SIZE FILTER -->
+                    <div class="space-y-2">
+                        <label class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Filter Size</label>
+                        <div class="grid grid-cols-5 gap-1.5" id="size-filters">
+                            <button onclick="toggleSizeFilter('XS')" class="size-btn text-xs py-1.5 rounded-lg border border-gray-700 text-gray-300 hover:border-hotpink-500 transition">XS</button>
+                            <button onclick="toggleSizeFilter('S')" class="size-btn text-xs py-1.5 rounded-lg border border-gray-700 text-gray-300 hover:border-hotpink-500 transition">S</button>
+                            <button onclick="toggleSizeFilter('M')" class="size-btn text-xs py-1.5 rounded-lg border border-gray-700 text-gray-300 hover:border-hotpink-500 transition">M</button>
+                            <button onclick="toggleSizeFilter('L')" class="size-btn text-xs py-1.5 rounded-lg border border-gray-700 text-gray-300 hover:border-hotpink-500 transition">L</button>
+                            <button onclick="toggleSizeFilter('XL')" class="size-btn text-xs py-1.5 rounded-lg border border-gray-700 text-gray-300 hover:border-hotpink-500 transition">XL</button>
+                        </div>
+                    </div>
+
+                    <!-- COLOR FILTER -->
+                    <div class="space-y-2">
+                        <label class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Filter Color</label>
+                        <div class="flex flex-wrap gap-2" id="color-filters">
+                            <button onclick="toggleColorFilter('Hot Pink')" class="w-6 h-6 rounded-full bg-hotpink-500 border border-white/20 ring-offset-2 ring-hotpink-500"></button>
+                            <button onclick="toggleColorFilter('Black')" class="w-6 h-6 rounded-full bg-black border border-gray-600"></button>
+                            <button onclick="toggleColorFilter('White')" class="w-6 h-6 rounded-full bg-white border border-gray-300"></button>
+                            <button onclick="toggleColorFilter('Purple')" class="w-6 h-6 rounded-full bg-purple-600 border border-white/20"></button>
+                            <button onclick="toggleColorFilter('Denim Blue')" class="w-6 h-6 rounded-full bg-blue-600 border border-white/20"></button>
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+
+            <!-- PRODUCTS GRID CONTAINER -->
+            <section class="flex-1">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-white tracking-tight" id="active-category-title">All Trendy Collection</h2>
+                        <p class="text-xs text-gray-400 mt-1" id="product-count-label">Showing all products</p>
+                    </div>
+                </div>
+
+                <!-- PRODUCT CARDS GRID -->
+                <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Dynamic Product Cards Will Be Rendered Here -->
+                </div>
+
+                <!-- EMPTY STATE -->
+                <div id="no-results" class="hidden text-center py-16 space-y-4">
+                    <i class="fa-solid fa-shirt text-5xl text-gray-600"></i>
+                    <h3 class="text-lg font-bold text-white">No styles matched your criteria</h3>
+                    <p class="text-xs text-gray-400">Try adjusting your filters, price range, or search keyword.</p>
+                    <button onclick="resetFilters()" class="bg-hotpink-600 hover:bg-hotpink-500 text-white text-xs px-6 py-2.5 rounded-full font-semibold transition">Clear Filters</button>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- CUSTOMER REVIEWS SECTION -->
+    <section class="border-t border-gray-800 bg-darkcard/50 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-10 space-y-2">
+                <span class="text-xs font-extrabold text-hotpink-500 uppercase tracking-widest">Real Fashionistas</span>
+                <h2 class="text-3xl font-extrabold text-white">WHAT GIRLS ARE SAYING</h2>
+                <p class="text-xs text-gray-400">Join thousands of happy customers serving looks worldwide.</p>
+            </div>
+
+            <!-- REVIEW CARDS GRID -->
+            <div id="reviews-container" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                <!-- Static & Dynamic Reviews -->
+            </div>
+
+            <!-- ADD REVIEW FORM -->
+            <div class="max-w-xl mx-auto bg-darkcard border border-gray-800 rounded-2xl p-6">
+                <h3 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-pen-to-square text-hotpink-500"></i> Leave Your Style Review
+                </h3>
+                <form id="reviewForm" onsubmit="submitReview(event)" class="space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" id="reviewerName" required placeholder="Your Name" class="bg-darkbg border border-gray-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-hotpink-500">
+                        <select id="reviewerRating" class="bg-darkbg border border-gray-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-hotpink-500">
+                            <option value="5">⭐⭐⭐⭐⭐ (5/5)</option>
+                            <option value="4">⭐⭐⭐⭐ (4/5)</option>
+                            <option value="3">⭐⭐⭐ (3/5)</option>
+                        </select>
+                    </div>
+                    <textarea id="reviewerComment" required rows="3" placeholder="Tell us how much you loved your outfit..." class="w-full bg-darkbg border border-gray-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-hotpink-500"></textarea>
+                    <button type="submit" class="w-full bg-hotpink-600 hover:bg-hotpink-500 text-white text-xs font-bold py-3 rounded-xl transition">Submit Review</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER SECTION -->
+    <section class="bg-gradient-to-r from-hotpink-900/40 via-purple-900/40 to-hotpink-900/40 border-t border-b border-gray-800 py-12">
+        <div class="max-w-4xl mx-auto px-4 text-center space-y-4">
+            <i class="fa-solid fa-envelope-open-text text-3xl text-hotpink-500"></i>
+            <h2 class="text-2xl font-bold text-white">UNLOCK 15% OFF YOUR FIRST ORDER</h2>
+            <p class="text-xs text-gray-300 max-w-md mx-auto">Subscribe to get exclusive access to drop alerts, secret VIP discounts, and style guides.</p>
+            <form onsubmit="handleNewsletter(event)" class="flex flex-col sm:flex-row justify-center gap-3 max-w-md mx-auto">
+                <input type="email" required placeholder="Enter your email address..." class="bg-darkcard border border-gray-700 text-xs text-white rounded-full px-5 py-3 focus:outline-none focus:border-hotpink-500 flex-1">
+                <button type="submit" class="bg-hotpink-600 hover:bg-hotpink-500 text-white font-bold text-xs px-8 py-3 rounded-full transition shadow-lg">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-darkbg border-t border-gray-800 text-gray-400 text-xs py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="space-y-3">
+                <span class="text-lg font-extrabold text-white">GIRLS <span class="text-hotpink-500">HOT</span> STYLE</span>
+                <p class="text-gray-400 text-xs leading-relaxed">Your ultimate online destination for trendy, bold, and modern women's fashion wear. Worldwide shipping available.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Customer Service</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-hotpink-400">Order Tracking</a></li>
+                    <li><a href="#" class="hover:text-hotpink-400">Returns & Exchanges</a></li>
+                    <li><a href="#" class="hover:text-hotpink-400">Shipping Policy</a></li>
+                    <li><a href="#" class="hover:text-hotpink-400">Size Guide</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><button onclick="filterCategory('Tops')" class="hover:text-hotpink-400">Crop Tops</button></li>
+                    <li><button onclick="filterCategory('Dresses')" class="hover:text-hotpink-400">Party Dresses</button></li>
+                    <li><button onclick="filterCategory('Denim')" class="hover:text-hotpink-400">Streetwear Denim</button></li>
+                    <li><button onclick="filterCategory('Sale')" class="hover:text-hotpink-400">Clearance Sale</button></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Connect With Us</h4>
+                <div class="flex gap-3 text-lg text-gray-300">
+                    <a href="#" class="hover:text-hotpink-500"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-hotpink-500"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="hover:text-hotpink-500"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#" class="hover:text-hotpink-500"><i class="fa-brands fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 text-center border-t border-gray-800/80 pt-6 mt-8">
+            &copy; 2026 GIRLS HOT STYLE. All Rights Reserved. Built for Trendy Fashion.
+        </div>
+    </footer>
+
+    <!-- SLIDE-OUT CART DRAWER -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity" onclick="toggleCart(false)"></div>
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-darkcard border-l border-gray-800 flex flex-col justify-between shadow-2xl">
+                
+                <!-- CART HEADER -->
+                <div class="p-6 border-b border-gray-800 flex justify-between items-center">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-hotpink-500"></i> Your Shopping Bag
+                    </h3>
+                    <button onclick="toggleCart(false)" class="text-gray-400 hover:text-white text-lg">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <!-- CART ITEMS LIST -->
+                <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    <!-- Dynamic Cart Items Rendered Here -->
+                </div>
+
+                <!-- CART FOOTER & CHECKOUT SUMMARY -->
+                <div class="p-6 border-t border-gray-800 bg-darkbg space-y-4">
+                    
+                    <!-- PROMO CODE INPUT -->
+                    <div class="flex gap-2">
+                        <input type="text" id="promoInput" placeholder="Promo code (e.g. HOT20)" class="bg-darkcard border border-gray-700 text-xs text-white rounded-xl px-3 py-2 flex-1 focus:outline-none focus:border-hotpink-500 uppercase">
+                        <button onclick="applyPromoCode()" class="bg-gray-800 hover:bg-gray-700 text-white text-xs font-bold px-4 py-2 rounded-xl transition">Apply</button>
+                    </div>
+                    <p id="promo-msg" class="text-[11px] hidden"></p>
+
+                    <!-- CALCULATIONS -->
+                    <div class="space-y-1.5 text-xs text-gray-400">
+                        <div class="flex justify-between">
+                            <span>Subtotal</span>
+                            <span id="cart-subtotal" class="text-white font-semibold">$0.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Discount</span>
+                            <span id="cart-discount" class="text-hotpink-400 font-semibold">-$0.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Estimated Tax & Shipping</span>
+                            <span id="cart-tax" class="text-white font-semibold">$0.00</span>
+                        </div>
+                        <div class="flex justify-between text-base font-bold text-white border-t border-gray-800 pt-2 mt-1">
+                            <span>Total</span>
+                            <span id="cart-total" class="text-hotpink-500">$0.00</span>
+                        </div>
+                    </div>
+
+                    <button onclick="openCheckoutModal()" id="checkout-btn" class="w-full bg-gradient-to-r from-hotpink-600 to-purple-600 hover:from-hotpink-500 hover:to-purple-500 text-white font-bold py-3.5 rounded-xl shadow-lg transition glow-effect">
+                        Proceed to Checkout <i class="fa-solid fa-arrow-right ml-1 text-xs"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- QUICK VIEW MODAL -->
+    <div id="quickview-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+        <div class="bg-darkcard border border-gray-800 rounded-3xl max-w-3xl w-full p-6 sm:p-8 relative overflow-hidden shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="closeQuickView()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="quickview-content" class="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
+                <!-- Rendered dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECKOUT MODAL -->
+    <div id="checkout-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+        <div class="bg-darkcard border border-gray-800 rounded-3xl max-w-xl w-full p-6 sm:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- CHECKOUT STEPS -->
+            <div id="checkout-step-1" class="space-y-6">
+                <h3 class="text-xl font-bold text-white border-b border-gray-800 pb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-truck-fast text-hotpink-500"></i> Shipping Address
+                </h3>
+                <form onsubmit="goToCheckoutPayment(event)" class="space-y-4">
+                    <div class="grid grid-cols-2 gap-3">
+                        <input type="text" required placeholder="First Name" class="bg-darkbg border border-gray-700 text-xs text-white p-3 rounded-xl focus:border-hotpink-500">
+                        <input type="text" required placeholder="Last Name" class="bg-darkbg border border-gray-700 text-xs text-white p-3 rounded-xl focus:border-hotpink-500">
+                    </div>
+                    <input type="email" required placeholder="Email Address" class="w-full bg-darkbg border border-gray-700 text-xs text-white p-3 rounded-xl focus:border-hotpink-500">
+                    <input type="text" required placeholder="Street Address" class="w-full bg-darkbg border border-gray-700 text-xs text-white p-3 rounded-xl focus:border-hotpink-500">
+                    <div class="grid grid-cols-3 gap-3">
+                        <input type="text" required placeholder="City" class="bg-darkbg border border-gray-700 text-xs text-white p-3 rounded-xl focus:border-hotpink-500">
+                        <input type="text" required placeholder="State / Country" class="bg-darkbg border border-gray-700 text-xs text-white p-3 rounded-xl focus:border-hotpink-500">
+                        <input type="text" required placeholder="Zip Code" class="bg-darkbg border border-gray-700 text-xs text-white p-3 rounded-xl focus:border-hotpink-500">
+                    </div>
+                    <button type="submit" class="w-full bg-hotpink-600 hover:bg-hotpink-500 text-white font-bold py-3.5 rounded-xl transition">Continue to Payment</button>
+                </form>
+            </div>
+
+            <!-- PAYMENT STEP -->
+            <div id="checkout-step-2" class="space-y-6 hidden">
+                <h3 class="text-xl font-bold text-white border-b border-gray-800 pb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-credit-card text-hotpink-500"></i> Payment Options
+                </h3>
+                <div class="flex gap-2">
+                    <button onclick="selectPaymentMethod('card')" id="pay-card-btn" class="flex-1 py-2.5 border border-hotpink-500 text-hotpink-400 text-xs font-bold rounded-xl flex items-center justify-center gap-2 bg-hotpink-500/10">
+                        <i class="fa-solid fa-credit-card"></i> Credit Card
+                    </button>
+                    <button onclick="selectPaymentMethod('paypal')" id="pay-paypal-btn" class="flex-1 py-2.5 border border-gray-700 text-gray-400 text-xs font-bold rounded-xl flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-paypal"></i> PayPal
+                    </button>
+                </div>
+
+                <form onsubmit="completeOrder(event)" class="space-y-4">
+                    <div id="card-fields" class="space-y-3">
+                        <input type="text" required placeholder="Cardholder Name" class="w-full bg-darkbg border border-gray-700 text-xs text-white p-3 rounded-xl focus:border-hotpink-500">
+                        <input type="text" required placeholder="Card Number (0000 0000 0000 0000)" class="w-full bg-darkbg border border-gray-700 text-xs text-white p-3 rounded-xl focus:border-hotpink-500">
+                        <div class="grid grid-cols-2 gap-3">
+                            <input type="text" required placeholder="MM/YY" class="bg-darkbg border border-gray-700 text-xs text-white p-3 rounded-xl focus:border-hotpink-500">
+                            <input type="password" required placeholder="CVV" maxlength="4" class="bg-darkbg border border-gray-700 text-xs text-white p-3 rounded-xl focus:border-hotpink-500">
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-hotpink-600 hover:bg-hotpink-500 text-white font-bold py-3.5 rounded-xl transition glow-effect">Complete Order Now</button>
+                </form>
+            </div>
+
+            <!-- ORDER CONFIRMATION STEP -->
+            <div id="checkout-step-3" class="space-y-6 text-center py-6 hidden">
+                <div class="w-16 h-16 bg-hotpink-500/20 text-hotpink-500 rounded-full flex items-center justify-center text-3xl mx-auto border border-hotpink-500">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h3 class="text-2xl font-extrabold text-white">ORDER CONFIRMED!</h3>
+                <p class="text-xs text-gray-300">Thank you for shopping with GIRLS HOT STYLE! Your trendy order is being processed.</p>
+                <div class="bg-darkbg p-4 rounded-xl border border-gray-800 text-xs space-y-2 text-left">
+                    <p class="text-gray-400">Tracking Number: <span id="tracking-num" class="text-hotpink-400 font-mono font-bold">GHS-98765432</span></p>
+                    <p class="text-gray-400">Estimated Delivery: <span class="text-white font-bold">3-5 Business Days</span></p>
+                </div>
+                <button onclick="closeCheckoutModal()" class="w-full bg-hotpink-600 text-white font-bold py-3 rounded-xl transition">Back to Store</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- WISHLIST MODAL -->
+    <div id="wishlist-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+        <div class="bg-darkcard border border-gray-800 rounded-3xl max-w-lg w-full p-6 relative shadow-2xl max-h-[80vh] overflow-y-auto">
+            <button onclick="toggleWishlistModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-heart text-hotpink-500"></i> Your Saved Wishlist
+            </h3>
+            <div id="wishlist-container" class="space-y-3">
+                <!-- Wishlist items -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT APP LOGIC -->
+    <script>
+        // PRODUCTS DATA BASE
+        const products = [
+            {
+                id: 1,
+                title: "Neon Glow Ribbed Crop Top",
+                category: "Tops",
+                price: 29.99,
+                rating: 4.9,
+                reviewsCount: 128,
+                badge: "HOT",
+                colors: ["Hot Pink", "Black", "White"],
+                sizes: ["XS", "S", "M", "L"],
+                image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&q=80&w=800",
+                description: "Turn heads with this ultra-trendy ribbed crop top. Stretchy, breathable, and designed for nighttime street vibe."
+            },
+            {
+                id: 2,
+                title: "Glitz & Glam Mini Party Dress",
+                category: "Dresses",
+                price: 69.99,
+                rating: 5.0,
+                reviewsCount: 94,
+                badge: "BESTSELLER",
+                colors: ["Hot Pink", "Purple", "Black"],
+                sizes: ["S", "M", "L"],
+                image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&q=80&w=800",
+                description: "Highlight your curves with our bodycon glitter party dress. Features asymmetric shoulder straps and soft luxury lining."
+            },
+            {
+                id: 3,
+                title: "Oversized Vintage Denim Jacket",
+                category: "Denim",
+                price: 89.99,
+                rating: 4.8,
+                reviewsCount: 210,
+                badge: "NEW",
+                colors: ["Denim Blue", "Black"],
+                sizes: ["S", "M", "L", "XL"],
+                image: "https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&q=80&w=800",
+                description: "Classic distressed vintage oversized denim jacket. Perfect layer for cool urban nights."
+            },
+            {
+                id: 4,
+                title: "Cyberpunk Tinted Sunglasses",
+                category: "Accessories",
+                price: 24.99,
+                rating: 4.7,
+                reviewsCount: 67,
+                badge: "HOT",
+                colors: ["Hot Pink", "Purple", "Black"],
+                sizes: ["S"],
+                image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&q=80&w=800",
+                description: "Statement shield sunglasses featuring UV400 protection and a sleek rimless aesthetic."
+            },
+            {
+                id: 5,
+                title: "Satin Corset Streetwear Bustier",
+                category: "Tops",
+                price: 39.99,
+                rating: 4.9,
+                reviewsCount: 156,
+                badge: "SALE",
+                colors: ["White", "Hot Pink", "Black"],
+                sizes: ["XS", "S", "M"],
+                image: "https://images.unsplash.com/photo-1502716119720-b23a93e5fe1b?auto=format&fit=crop&q=80&w=800",
+                description: "Structured satin corset top with adjustable lace-up back detail. Elegant yet fierce."
+            },
+            {
+                id: 6,
+                title: "High-Waist Distressed Cargo Jeans",
+                category: "Denim",
+                price: 74.99,
+                rating: 4.8,
+                reviewsCount: 88,
+                badge: "HOT",
+                colors: ["Denim Blue", "Black"],
+                sizes: ["XS", "S", "M", "L", "XL"],
+                image: "https://images.unsplash.com/photo-1582142307037-336c2576b4ef?auto=format&fit=crop&q=80&w=800",
+                description: "Trendy multi-pocket baggy cargo denim pants with a sleek high-waist fit."
+            }
+        ];
+
+        // GLOBAL APP STATE
+        let currentCategory = "All";
+        let searchQuery = "";
+        let selectedSizeFilter = null;
+        let selectedColorFilter = null;
+        let cart = [];
+        let wishlist = [];
+        let appliedDiscount = 0; // percentage
+        let currencyRates = { USD: 1, EUR: 0.92, GBP: 0.79 };
+        let currentCurrency = "USD";
+        let currencySymbols = { USD: "$", EUR: "€", GBP: "£" };
+
+        let customerReviews = [
+            { name: "Sophia M.", rating: 5, comment: "The Neon Glow top fit so perfectly! Delivery was super quick too." },
+            { name: "Chloe K.", rating: 5, comment: "Obsessed with the Glitz dress. Received compliments all night long!" },
+            { name: "Jessica R.", rating: 4, comment: "High quality denim jacket. Feels premium and looks amazing in photos." }
+        ];
+
+        // INITIALIZATION
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            renderReviews();
+            updateCartUI();
+        });
+
+        // RENDER PRODUCTS GRID
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            const noResults = document.getElementById('no-results');
+            const countLabel = document.getElementById('product-count-label');
+
+            let filtered = products.filter(p => {
+                const matchesCat = (currentCategory === "All") || 
+                                   (currentCategory === "Sale" && p.badge === "SALE") || 
+                                   (p.category === currentCategory);
+                const matchesSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                      p.category.toLowerCase().includes(searchQuery.toLowerCase());
+                const maxPrice = parseFloat(document.getElementById('priceRange').value);
+                const matchesPrice = p.price <= maxPrice;
+                const matchesSize = !selectedSizeFilter || p.sizes.includes(selectedSizeFilter);
+                const matchesColor = !selectedColorFilter || p.colors.includes(selectedColorFilter);
+
+                return matchesCat && matchesSearch && matchesPrice && matchesSize && matchesColor;
+            });
+
+            // Sorting
+            const sortVal = document.getElementById('sortSelect').value;
+            if (sortVal === "price-low") filtered.sort((a,b) => a.price - b.price);
+            if (sortVal === "price-high") filtered.sort((a,b) => b.price - a.price);
+            if (sortVal === "rating") filtered.sort((a,b) => b.rating - a.rating);
+
+            countLabel.textContent = `Showing ${filtered.length} products`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            grid.innerHTML = filtered.map(p => {
+                const formattedPrice = formatPrice(p.price);
+                const isWish = wishlist.some(item => item.id === p.id);
+
+                return `
+                    <div class="bg-darkcard border border-gray-800/80 rounded-2xl overflow-hidden group hover:border-hotpink-500/50 transition duration-300 flex flex-col justify-between">
+                        <div class="relative overflow-hidden aspect-[4/5] cursor-pointer" onclick="openQuickView(${p.id})">
+                            <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <span class="absolute top-3 left-3 bg-hotpink-600 text-white font-black text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider shadow">
+                                ${p.badge}
+                            </span>
+                            <button onclick="event.stopPropagation(); toggleWishlist(${p.id})" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-darkbg/80 backdrop-blur-md flex items-center justify-center text-gray-300 hover:text-hotpink-500 transition">
+                                <i class="${isWish ? 'fa-solid text-hotpink-500' : 'fa-regular'} fa-heart text-sm"></i>
+                            </button>
+                        </div>
+
+                        <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+                            <div>
+                                <div class="flex items-center justify-between text-xs text-gray-400 mb-1">
+                                    <span>${p.category}</span>
+                                    <span class="text-yellow-400 font-bold flex items-center gap-1">
+                                        <i class="fa-solid fa-star text-[10px]"></i> ${p.rating} (${p.reviewsCount})
+                                    </span>
+                                </div>
+                                <h3 onclick="openQuickView(${p.id})" class="text-white font-bold text-sm hover:text-hotpink-400 transition cursor-pointer line-clamp-1">${p.title}</h3>
+                            </div>
+
+                            <!-- COLOR SWATCH PREVIEW -->
+                            <div class="flex items-center gap-1.5">
+                                ${p.colors.map(c => `
+                                    <span class="w-3 h-3 rounded-full border border-gray-600" style="background-color: ${getColorHex(c)}"></span>
+                                `).join('')}
+                            </div>
+
+                            <div class="pt-2 border-t border-gray-800/60 flex items-center justify-between">
+                                <span class="text-lg font-extrabold text-white">${formattedPrice}</span>
+                                <button onclick="addToCart(${p.id})" class="bg-hotpink-600/10 hover:bg-hotpink-600 text-hotpink-400 hover:text-white border border-hotpink-500/30 font-bold text-xs px-3.5 py-2 rounded-xl transition flex items-center gap-1.5">
+                                    <i class="fa-solid fa-plus text-[10px]"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // COLOR HEX HELPER
+        function getColorHex(name) {
+            if (name === "Hot Pink") return "#f63d7e";
+            if (name === "Black") return "#000000";
+            if (name === "White") return "#ffffff";
+            if (name === "Purple") return "#9333ea";
+            if (name === "Denim Blue") return "#2563eb";
+            return "#6b7280";
+        }
+
+        // CURRENCY FORMATTER
+        function formatPrice(usdPrice) {
+            const converted = usdPrice * currencyRates[currentCurrency];
+            return `${currencySymbols[currentCurrency]}${converted.toFixed(2)}`;
+        }
+
+        function changeCurrency(val) {
+            currentCurrency = val;
+            renderProducts();
+            updateCartUI();
+            document.getElementById('hero-price-tag').textContent = formatPrice(49.99);
+        }
+
+        // CATEGORY FILTER
+        function filterCategory(cat) {
+            currentCategory = cat;
+            document.getElementById('active-category-title').textContent = `${cat} Collection`;
+            document.querySelectorAll('.nav-cat-btn').forEach(btn => {
+                if (btn.getAttribute('data-cat') === cat) {
+                    btn.classList.add('text-hotpink-400', 'font-semibold');
+                } else {
+                    btn.classList.remove('text-hotpink-400', 'font-semibold');
+                }
+            });
+            renderProducts();
+        }
+
+        // SEARCH & FILTERS
+        function handleSearch() {
+            searchQuery = document.getElementById('searchInput').value;
+            renderProducts();
+        }
+
+        function handleSearchMobile() {
+            searchQuery = document.getElementById('searchInputMobile').value;
+            renderProducts();
+        }
+
+        function applyFilters() {
+            const price = document.getElementById('priceRange').value;
+            document.getElementById('price-val').textContent = formatPrice(price);
+            renderProducts();
+        }
+
+        function toggleSizeFilter(sz) {
+            selectedSizeFilter = selectedSizeFilter === sz ? null : sz;
+            renderProducts();
+        }
+
+        function toggleColorFilter(clr) {
+            selectedColorFilter = selectedColorFilter === clr ? null : clr;
+            renderProducts();
+        }
+
+        function resetFilters() {
+            searchQuery = "";
+            selectedSizeFilter = null;
+            selectedColorFilter = null;
+            document.getElementById('priceRange').value = 150;
+            document.getElementById('price-val').textContent = formatPrice(150);
+            document.getElementById('searchInput').value = "";
+            filterCategory("All");
+        }
+
+        // CART LOGIC
+        function addToCart(productId, selectedSize = 'S') {
+            const product = products.find(p => p.id === productId);
+            const existingIndex = cart.findIndex(item => item.id === productId && item.selectedSize === selectedSize);
+
+            if (existingIndex > -1) {
+                cart[existingIndex].qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1, selectedSize });
+            }
+
+            updateCartUI();
+            toggleCart(true);
+        }
+
+        function updateCartQty(index, change) {
+            cart[index].qty += change;
+            if (cart[index].qty <= 0) cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cart-badge');
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            badge.textContent = totalItems;
+
+            const container = document.getElementById('cart-items-container');
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-gray-500 space-y-3">
+                        <i class="fa-solid fa-bag-shopping text-4xl text-gray-600"></i>
+                        <p class="text-xs font-semibold">Your bag is currently empty.</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = cart.map((item, idx) => `
+                    <div class="flex gap-4 bg-darkbg p-3.5 rounded-2xl border border-gray-800 items-center">
+                        <img src="${item.image}" alt="${item.title}" class="w-16 h-20 object-cover rounded-xl">
+                        <div class="flex-1 space-y-1">
+                            <h4 class="text-xs font-bold text-white line-clamp-1">${item.title}</h4>
+                            <p class="text-[10px] text-gray-400">Size: <span class="text-hotpink-400 font-bold">${item.selectedSize}</span></p>
+                            <span class="text-xs font-extrabold text-white">${formatPrice(item.price)}</span>
+                        </div>
+                        <div class="flex flex-col items-end gap-2">
+                            <button onclick="cart.splice(${idx},1); updateCartUI();" class="text-gray-500 hover:text-red-400 text-xs">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                            <div class="flex items-center gap-2 bg-darkcard px-2 py-1 rounded-lg border border-gray-700 text-xs">
+                                <button onclick="updateCartQty(${idx}, -1)" class="text-gray-400 hover:text-white font-bold">-</button>
+                                <span class="text-white font-bold text-xs">${item.qty}</span>
+                                <button onclick="updateCartQty(${idx}, 1)" class="text-gray-400 hover:text-white font-bold">+</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Calculations
+            const rawSubtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const discountAmt = rawSubtotal * (appliedDiscount / 100);
+            const tax = (rawSubtotal - discountAmt) * 0.08;
+            const finalTotal = (rawSubtotal - discountAmt) + tax;
+
+            document.getElementById('cart-subtotal').textContent = formatPrice(rawSubtotal);
+            document.getElementById('cart-discount').textContent = `-${formatPrice(discountAmt)}`;
+            document.getElementById('cart-tax').textContent = formatPrice(tax);
+            document.getElementById('cart-total').textContent = formatPrice(finalTotal);
+        }
+
+        function toggleCart(open) {
+            const drawer = document.getElementById('cart-drawer');
+            if (open) drawer.classList.remove('hidden');
+            else drawer.classList.add('hidden');
+        }
+
+        function applyPromoCode() {
+            const code = document.getElementById('promoInput').value.trim().toUpperCase();
+            const msg = document.getElementById('promo-msg');
+
+            if (code === "HOT20") {
+                appliedDiscount = 20;
+                msg.textContent = "✓ 20% Discount Applied!";
+                msg.className = "text-[11px] text-green-400 font-bold";
+            } else {
+                appliedDiscount = 0;
+                msg.textContent = "X Invalid Promo Code";
+                msg.className = "text-[11px] text-red-400 font-bold";
+            }
+            msg.classList.remove('hidden');
+            updateCartUI();
+        }
+
+        // QUICK VIEW MODAL
+        function openQuickView(productId) {
+            const product = products.find(p => p.id === productId);
+            const modal = document.getElementById('quickview-modal');
+            const content = document.getElementById('quickview-content');
+
+            content.innerHTML = `
+                <div class="rounded-2xl overflow-hidden border border-gray-800 aspect-square">
+                    <img src="${product.image}" class="w-full h-full object-cover">
+                </div>
+                <div class="space-y-4">
+                    <span class="text-xs font-bold text-hotpink-500 uppercase tracking-wider">${product.category}</span>
+                    <h2 class="text-2xl font-bold text-white">${product.title}</h2>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="text-yellow-400 font-bold">⭐⭐⭐⭐⭐ ${product.rating}</span>
+                        <span class="text-gray-400">(${product.reviewsCount} customer reviews)</span>
+                    </div>
+                    <p class="text-xs text-gray-300 leading-relaxed">${product.description}</p>
+                    
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-gray-400 uppercase">Select Size</label>
+                        <div class="flex gap-2">
+                            ${product.sizes.map(s => `
+                                <button onclick="selectQuickViewSize(this, '${s}')" class="qv-size-btn border border-gray-700 text-white font-bold text-xs px-3 py-1.5 rounded-lg hover:border-hotpink-500 transition">${s}</button>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+                        <span class="text-2xl font-extrabold text-white">${formatPrice(product.price)}</span>
+                        <button onclick="addToCart(${product.id}, window.selectedQVSize || 'S'); closeQuickView();" class="bg-hotpink-600 hover:bg-hotpink-500 text-white font-bold text-xs px-6 py-3 rounded-xl transition glow-effect">
+                            Add To Bag
+                        </button>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function selectQuickViewSize(btn, sz) {
+            document.querySelectorAll('.qv-size-btn').forEach(b => b.classList.remove('border-hotpink-500', 'bg-hotpink-500/20'));
+            btn.classList.add('border-hotpink-500', 'bg-hotpink-500/20');
+            window.selectedQVSize = sz;
+        }
+
+        function closeQuickView() {
+            document.getElementById('quickview-modal').classList.add('hidden');
+        }
+
+        // WISHLIST LOGIC
+        function toggleWishlist(id) {
+            const prod = products.find(p => p.id === id);
+            const idx = wishlist.findIndex(w => w.id === id);
+
+            if (idx > -1) wishlist.splice(idx, 1);
+            else wishlist.push(prod);
+
+            document.getElementById('wishlist-badge').textContent = wishlist.length;
+            if (wishlist.length > 0) document.getElementById('wishlist-badge').classList.remove('hidden');
+            else document.getElementById('wishlist-badge').classList.add('hidden');
+
+            renderProducts();
+            renderWishlistModal();
+        }
+
+        function toggleWishlistModal() {
+            const modal = document.getElementById('wishlist-modal');
+            renderWishlistModal();
+            modal.classList.toggle('hidden');
+        }
+
+        function renderWishlistModal() {
+            const container = document.getElementById('wishlist-container');
+            if (wishlist.length === 0) {
+                container.innerHTML = `<p class="text-xs text-gray-500 text-center py-6">No saved styles in your wishlist.</p>`;
+            } else {
+                container.innerHTML = wishlist.map(item => `
+                    <div class="flex items-center justify-between bg-darkbg p-3 rounded-xl border border-gray-800">
+                        <div class="flex items-center gap-3">
+                            <img src="${item.image}" class="w-12 h-12 object-cover rounded-lg">
+                            <div>
+                                <h4 class="text-xs font-bold text-white">${item.title}</h4>
+                                <span class="text-xs font-extrabold text-hotpink-400">${formatPrice(item.price)}</span>
+                            </div>
+                        </div>
+                        <button onclick="addToCart(${item.id}); toggleWishlistModal();" class="bg-hotpink-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg">Move to Cart</button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // CHECKOUT FLOW
+        function openCheckoutModal() {
+            if (cart.length === 0) return;
+            toggleCart(false);
+            document.getElementById('checkout-modal').classList.remove('hidden');
+            document.getElementById('checkout-step-1').classList.remove('hidden');
+            document.getElementById('checkout-step-2').classList.add('hidden');
+            document.getElementById('checkout-step-3').classList.add('hidden');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkout-modal').classList.add('hidden');
+        }
+
+        function goToCheckoutPayment(e) {
+            e.preventDefault();
+            document.getElementById('checkout-step-1').classList.add('hidden');
+            document.getElementById('checkout-step-2').classList.remove('hidden');
+        }
+
+        function selectPaymentMethod(type) {
+            const cardBtn = document.getElementById('pay-card-btn');
+            const paypalBtn = document.getElementById('pay-paypal-btn');
+
+            if (type === 'card') {
+                cardBtn.className = "flex-1 py-2.5 border border-hotpink-500 text-hotpink-400 text-xs font-bold rounded-xl flex items-center justify-center gap-2 bg-hotpink-500/10";
+                paypalBtn.className = "flex-1 py-2.5 border border-gray-700 text-gray-400 text-xs font-bold rounded-xl flex items-center justify-center gap-2";
+            } else {
+                paypalBtn.className = "flex-1 py-2.5 border border-hotpink-500 text-hotpink-400 text-xs font-bold rounded-xl flex items-center justify-center gap-2 bg-hotpink-500/10";
+                cardBtn.className = "flex-1 py-2.5 border border-gray-700 text-gray-400 text-xs font-bold rounded-xl flex items-center justify-center gap-2";
+            }
+        }
+
+        function completeOrder(e) {
+            e.preventDefault();
+            cart = [];
+            updateCartUI();
+            document.getElementById('tracking-num').textContent = "GHS-" + Math.floor(10000000 + Math.random() * 90000000);
+            document.getElementById('checkout-step-2').classList.add('hidden');
+            document.getElementById('checkout-step-3').classList.remove('hidden');
+        }
+
+        // REVIEWS SYSTEM
+        function renderReviews() {
+            const container = document.getElementById('reviews-container');
+            container.innerHTML = customerReviews.map(r => `
+                <div class="bg-darkcard border border-gray-800 p-5 rounded-2xl space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-bold text-white">${r.name}</span>
+                        <span class="text-yellow-400 text-xs font-bold">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="text-xs text-gray-300 leading-relaxed font-light">"${r.comment}"</p>
+                </div>
+            `).join('');
+        }
+
+        function submitReview(e) {
+            e.preventDefault();
+            const name = document.getElementById('reviewerName').value;
+            const rating = document.getElementById('reviewerRating').value;
+            const comment = document.getElementById('reviewerComment').value;
+
+            customerReviews.unshift({ name, rating: parseInt(rating), comment });
+            renderReviews();
+            document.getElementById('reviewForm').reset();
+        }
+
+        // NEWSLETTER SUBMISSION
+        function handleNewsletter(e) {
+            e.preventDefault();
+            alert("✨ Success! Use code HOT15 for 15% off your first order!");
+        }
+
+        function scrollToCatalog() {
+            document.getElementById('catalog').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>
