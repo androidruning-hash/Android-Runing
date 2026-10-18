@@ -3,14 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mobi Store | Premium Flagship Smartphones UAE</title>
-  
+  <title>Mobi Store | Premium Mobiles & Electronics UAE</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -26,7 +23,6 @@
       }
     }
   </script>
-  
   <style>
     .glass-nav {
       backdrop-filter: blur(12px);
@@ -112,7 +108,7 @@
     </div>
   </header>
 
-  <!-- MOBILE SEARCH BAR -->
+  <!-- MOBILE SEARCH BAR (Visible on small screens) -->
   <div class="md:hidden bg-white dark:bg-slate-900 p-3 border-b border-slate-200 dark:border-slate-800">
     <input type="text" id="mobileSearchInput" placeholder="Search smartphones..." class="w-full px-4 py-2 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none dark:text-white" onkeyup="renderProducts()">
   </div>
@@ -120,7 +116,7 @@
   <!-- MAIN CONTAINER -->
   <main class="container mx-auto px-4 py-6 flex-1">
 
-    <!-- HERO ANNOUNCEMENT BANNER -->
+    <!-- HERO CAROUSEL / ANNOUNCEMENT SLIDER -->
     <section class="mb-8 rounded-2xl overflow-hidden bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-6 md:p-10 relative shadow-xl">
       <div class="relative z-10 max-w-xl">
         <span class="inline-block bg-brandRed text-white text-[11px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider mb-3">NEW 2026 FLAGSHIP LAUNCH</span>
@@ -130,24 +126,27 @@
           <a href="#productGrid" class="bg-brandYellow text-slate-900 font-bold px-6 py-2.5 rounded-xl text-sm hover:bg-yellow-400 transition-colors inline-flex items-center gap-2">
             Explore Deals <i class="fa-solid fa-arrow-right"></i>
           </a>
+          <button class="bg-white/10 backdrop-blur border border-white/20 text-white font-semibold px-5 py-2.5 rounded-xl text-sm hover:bg-white/20 transition-colors">
+            Trade-In Estimator
+          </button>
         </div>
       </div>
       <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=600&q=80" alt="Flagship Mobile" class="absolute right-0 bottom-0 top-0 h-full w-1/2 object-cover opacity-30 md:opacity-80 rounded-r-2xl pointer-events-none hidden sm:block">
     </section>
 
-    <!-- BRAND QUICK TABS -->
+    <!-- TOP CATEGORY QUICK TABS -->
     <div class="flex items-center gap-3 overflow-x-auto pb-4 mb-6 custom-scrollbar">
-      <button onclick="setBrandFilter('ALL')" class="category-tab bg-slate-900 text-white dark:bg-brandYellow dark:text-slate-900 px-5 py-2 rounded-full font-bold text-xs whitespace-nowrap shadow-sm">All Smartphones</button>
+      <button onclick="setBrandFilter('ALL')" class="category-tab active-tab bg-slate-900 text-white dark:bg-brandYellow dark:text-slate-900 px-5 py-2 rounded-full font-bold text-xs whitespace-nowrap shadow-sm">All Smartphones</button>
       <button onclick="setBrandFilter('Apple')" class="category-tab bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 px-5 py-2 rounded-full font-bold text-xs whitespace-nowrap hover:bg-slate-100 dark:hover:bg-slate-700">Apple iPhone</button>
       <button onclick="setBrandFilter('Samsung')" class="category-tab bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 px-5 py-2 rounded-full font-bold text-xs whitespace-nowrap hover:bg-slate-100 dark:hover:bg-slate-700">Samsung Galaxy</button>
       <button onclick="setBrandFilter('Samnang')" class="category-tab bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 px-5 py-2 rounded-full font-bold text-xs whitespace-nowrap hover:bg-slate-100 dark:hover:bg-slate-700">Samnang Quantum</button>
       <button onclick="setBrandFilter('Xiaomi')" class="category-tab bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 px-5 py-2 rounded-full font-bold text-xs whitespace-nowrap hover:bg-slate-100 dark:hover:bg-slate-700">Xiaomi</button>
     </div>
 
-    <!-- MAIN E-COMMERCE LAYOUT -->
+    <!-- MAIN E-COMMERCE LAYOUT: SIDEBAR + PRODUCT GRID -->
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
       
-      <!-- SIDEBAR FILTERS -->
+      <!-- SIDEBAR FILTERS (Sharaf DG Inspired Layout) -->
       <aside class="space-y-6">
         <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
           <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-700 mb-4">
@@ -157,7 +156,7 @@
             <button onclick="resetFilters()" class="text-xs text-brandRed font-semibold hover:underline">Clear All</button>
           </div>
 
-          <!-- EXPRESS TOGGLES -->
+          <!-- TOGGLES -->
           <div class="space-y-3 pb-4 border-b border-slate-200 dark:border-slate-700">
             <label class="flex items-center justify-between cursor-pointer">
               <span class="text-xs font-semibold text-slate-700 dark:text-slate-300">⚡ Express Delivery 24h</span>
@@ -194,4 +193,505 @@
               <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Max Price (AED)</h4>
               <span id="priceValue" class="text-xs font-black text-brandRed">AED 12,000</span>
             </div>
-            <input type="range" id="priceRange" min="500" max="12000" step="250" value="12000"
+            <input type="range" id="priceRange" min="500" max="12000" step="250" value="12000" class="w-full accent-brandYellow" oninput="updatePriceLabel(); renderProducts()">
+          </div>
+
+          <!-- STORAGE CAPACITY -->
+          <div class="py-4">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Storage Capacity</h4>
+            <div class="grid grid-cols-3 gap-2 text-center text-xs">
+              <button onclick="toggleStorage('128GB')" class="storage-btn border border-slate-200 dark:border-slate-700 py-1.5 rounded-lg hover:border-brandYellow dark:text-slate-200 font-semibold">128GB</button>
+              <button onclick="toggleStorage('256GB')" class="storage-btn border border-slate-200 dark:border-slate-700 py-1.5 rounded-lg hover:border-brandYellow dark:text-slate-200 font-semibold">256GB</button>
+              <button onclick="toggleStorage('512GB')" class="storage-btn border border-slate-200 dark:border-slate-700 py-1.5 rounded-lg hover:border-brandYellow dark:text-slate-200 font-semibold">512GB</button>
+              <button onclick="toggleStorage('1TB')" class="storage-btn border border-slate-200 dark:border-slate-700 py-1.5 rounded-lg hover:border-brandYellow dark:text-slate-200 font-semibold col-span-3">1TB / 2TB Ultra</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- PRODUCT GRID SECTION -->
+      <section class="lg:col-span-3" id="productGrid">
+        
+        <!-- SORTING BAR -->
+        <div class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 mb-6 flex flex-wrap justify-between items-center gap-4">
+          <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">
+            Showing <span id="productCount" class="font-bold text-slate-900 dark:text-white">0</span> Smartphones
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-semibold text-slate-500">Sort By:</span>
+            <select id="sortSelect" onchange="renderProducts()" class="bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 text-xs font-semibold rounded-lg px-3 py-1.5 focus:outline-none dark:text-white">
+              <option value="relevant">Most Relevant</option>
+              <option value="low">Price: Low to High</option>
+              <option value="high">Price: High to Low</option>
+              <option value="rating">Customer Rating</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- PRODUCTS GRID CONTAINER -->
+        <div id="productsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Dynamic Products Rendered Here -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- QUICK VIEW / CONFIGURATOR MODAL -->
+  <div id="productModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-800 rounded-2xl max-w-2xl w-full p-6 shadow-2xl relative border border-slate-200 dark:border-slate-700 max-h-[90vh] overflow-y-auto custom-scrollbar">
+      <button onclick="closeModal()" class="absolute right-4 top-4 text-slate-400 hover:text-slate-600 dark:hover:text-white text-xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div id="modalContent" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Dynamic Modal Content -->
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE-OUT SHOPPING BAG DRAWER -->
+  <div id="cartDrawer" class="fixed inset-y-0 right-0 w-full max-w-md bg-white dark:bg-slate-800 shadow-2xl z-50 transform translate-x-full transition-transform duration-300 border-l border-slate-200 dark:border-slate-700 flex flex-col">
+    <div class="p-4 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-900">
+      <h3 class="font-bold text-lg text-slate-900 dark:text-white flex items-center gap-2">
+        <i class="fa-solid fa-bag-shopping text-brandYellow"></i> Shopping Bag
+      </h3>
+      <button onclick="closeCart()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white text-xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- CART ITEMS -->
+    <div id="cartItems" class="flex-1 overflow-y-auto p-4 space-y-4 custom-scrollbar">
+      <!-- Dynamic Cart Items -->
+    </div>
+
+    <!-- CART SUMMARY & CHECKOUT -->
+    <div class="p-4 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 space-y-3">
+      <div class="flex justify-between text-xs text-slate-500 dark:text-slate-400">
+        <span>Subtotal</span>
+        <span id="cartSubtotal" class="font-bold text-slate-800 dark:text-slate-200">AED 0.00</span>
+      </div>
+      <div class="flex justify-between text-xs text-slate-500 dark:text-slate-400">
+        <span>VAT (5%)</span>
+        <span id="cartVat" class="font-bold text-slate-800 dark:text-slate-200">AED 0.00</span>
+      </div>
+      <div class="flex justify-between text-base font-black text-slate-900 dark:text-white pt-2 border-t border-slate-200 dark:border-slate-700">
+        <span>Total AED</span>
+        <span id="cartTotal" class="text-brandRed">AED 0.00</span>
+      </div>
+      
+      <!-- PROMO CODE -->
+      <div class="flex gap-2">
+        <input type="text" id="promoInput" placeholder="Promo Code (MOBI2026)" class="flex-1 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 px-3 py-1.5 rounded-lg text-xs focus:outline-none dark:text-white">
+        <button onclick="applyPromo()" class="bg-slate-800 dark:bg-slate-700 text-white text-xs px-3 rounded-lg font-bold">Apply</button>
+      </div>
+
+      <button onclick="checkout()" class="w-full bg-brandYellow hover:bg-yellow-400 text-slate-900 font-extrabold py-3 rounded-xl text-sm transition-colors flex items-center justify-center gap-2 shadow-md">
+        Proceed to Express Checkout <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/971500000000" target="_blank" class="fixed bottom-6 right-6 bg-emerald-500 text-white p-3.5 rounded-full shadow-2xl hover:bg-emerald-600 transition-all z-40 flex items-center justify-center text-2xl hover:scale-110">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-xs mt-12">
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div>
+        <h4 class="text-white font-bold text-sm mb-3">Mobi Store UAE</h4>
+        <p class="leading-relaxed">Leading authorized retailer for Apple, Samsung, and Samnang flagship devices across Dubai and UAE.</p>
+      </div>
+      <div>
+        <h4 class="text-white font-bold text-sm mb-3">Customer Service</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:text-white">Express 24h Delivery</a></li>
+          <li><a href="#" class="hover:text-white">Warranty & Returns</a></li>
+          <li><a href="#" class="hover:text-white">Store Locations</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold text-sm mb-3">Payment & Protection</h4>
+        <p class="leading-relaxed">Tamara 4-installment plan, Visa, MasterCard, Apple Pay & Cash on Delivery supported.</p>
+      </div>
+      <div>
+        <h4 class="text-white font-bold text-sm mb-3">Newsletter</h4>
+        <div class="flex gap-2">
+          <input type="email" placeholder="Enter email" class="bg-slate-800 text-white px-3 py-1.5 rounded-lg text-xs w-full focus:outline-none">
+          <button class="bg-brandYellow text-slate-900 px-3 py-1.5 rounded-lg font-bold">Join</button>
+        </div>
+      </div>
+    </div>
+    <div class="container mx-auto px-4 pt-6 mt-6 border-t border-slate-800 text-center text-slate-500">
+      © 2026 Mobi Store UAE. All Rights Reserved. Modelled after premium Dubai retail standards.
+    </div>
+  </footer>
+
+  <!-- APPLICATION JAVASCRIPT LOGIC -->
+  <script>
+    // Flagship Inventory Dataset
+    const PRODUCTS = [
+      {
+        id: 'iphone-18-pro-max',
+        brand: 'Apple',
+        title: 'Apple iPhone 18 Pro Max 256GB Burgundy',
+        price: 5499,
+        wasPrice: 5999,
+        rating: 4.9,
+        express: true,
+        tag: 'NEW LAUNCH',
+        image: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80',
+        specs: { storage: '256GB', ram: '12GB', chip: 'A19 Pro AI', color: 'Burgundy' }
+      },
+      {
+        id: 'samsung-s26-ultra',
+        brand: 'Samsung',
+        title: 'Samsung Galaxy S26 Ultra 5G 512GB Titanium Black',
+        price: 4999,
+        wasPrice: 5499,
+        rating: 4.8,
+        express: true,
+        tag: 'BESTSELLER',
+        image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=500&q=80',
+        specs: { storage: '512GB', ram: '16GB', chip: 'Snapdragon 8 Gen 5', color: 'Titanium Black' }
+      },
+      {
+        id: 'samnang-quantum-ultra',
+        brand: 'Samnang',
+        title: 'Samnang Quantum Ultra 1TB 16GB Ceramic Edition',
+        price: 4299,
+        wasPrice: 4799,
+        rating: 5.0,
+        express: true,
+        tag: 'EXCLUSIVITY',
+        image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=500&q=80',
+        specs: { storage: '1TB', ram: '16GB', chip: 'Quantum Neural 9', color: 'Ceramic White' }
+      },
+      {
+        id: 'samsung-z-fold8',
+        brand: 'Samsung',
+        title: 'Samsung Galaxy Z Fold8 5G 512GB Cream',
+        price: 6854,
+        wasPrice: 7999,
+        rating: 4.9,
+        express: true,
+        tag: 'NEW LAUNCH',
+        image: 'https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=500&q=80',
+        specs: { storage: '512GB', ram: '12GB', chip: 'Fold AI Chip', color: 'Cream' }
+      },
+      {
+        id: 'iphone-17-pro',
+        brand: 'Apple',
+        title: 'Apple iPhone 17 Pro 256GB Cosmic Orange',
+        price: 4199,
+        wasPrice: 4699,
+        rating: 4.7,
+        express: false,
+        tag: '11% OFF',
+        image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=500&q=80',
+        specs: { storage: '256GB', ram: '8GB', chip: 'A18 Pro', color: 'Cosmic Orange' }
+      },
+      {
+        id: 'xiaomi-17t-pro',
+        brand: 'Xiaomi',
+        title: 'Xiaomi 17T Pro 5G 512GB 12GB RAM Deep Blue',
+        price: 2899,
+        wasPrice: 3299,
+        rating: 4.6,
+        express: true,
+        tag: 'EXPRESS',
+        image: 'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=500&q=80',
+        specs: { storage: '512GB', ram: '12GB', chip: 'Dimensity 9400', color: 'Deep Blue' }
+      }
+    ];
+
+    let cart = [];
+    let activeSelectedStorage = null;
+
+    // INITIALIZATION
+    window.addEventListener('DOMContentLoaded', () => {
+      renderProducts();
+    });
+
+    // LIGHT / DARK THEME TOGGLE
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('themeIcon');
+      const label = document.getElementById('themeLabel');
+
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        icon.className = 'fa-solid fa-moon';
+        label.innerText = 'Dark';
+      } else {
+        html.classList.remove('light');
+        html.classList.add('dark');
+        icon.className = 'fa-solid fa-sun';
+        label.innerText = 'Light';
+      }
+    }
+
+    // UPDATE PRICE LABEL SLIDER
+    function updatePriceLabel() {
+      const val = document.getElementById('priceRange').value;
+      document.getElementById('priceValue').innerText = `AED ${parseInt(val).toLocaleString()}`;
+    }
+
+    // FILTER PRODUCT LOGIC
+    function renderProducts() {
+      const container = document.getElementById('productsContainer');
+      const searchVal = (document.getElementById('searchInput').value || document.getElementById('mobileSearchInput').value || '').toLowerCase();
+      const maxPrice = parseInt(document.getElementById('priceRange').value);
+      const expressOnly = document.getElementById('expressToggle').checked;
+      const sortOption = document.getElementById('sortSelect').value;
+
+      // Brand Checkboxes
+      const selectedBrands = Array.from(document.querySelectorAll('.brand-checkbox:checked')).map(cb => cb.value);
+
+      let filtered = PRODUCTS.filter(p => {
+        const matchesSearch = p.title.toLowerCase().includes(searchVal) || p.brand.toLowerCase().includes(searchVal);
+        const matchesPrice = p.price <= maxPrice;
+        const matchesBrand = selectedBrands.includes(p.brand);
+        const matchesExpress = expressOnly ? p.express : true;
+        const matchesStorage = activeSelectedStorage ? p.specs.storage === activeSelectedStorage : true;
+
+        return matchesSearch && matchesPrice && matchesBrand && matchesExpress && matchesStorage;
+      });
+
+      // Sorting
+      if (sortOption === 'low') filtered.sort((a,b) => a.price - b.price);
+      if (sortOption === 'high') filtered.sort((a,b) => b.price - a.price);
+      if (sortOption === 'rating') filtered.sort((a,b) => b.rating - a.rating);
+
+      document.getElementById('productCount').innerText = filtered.length;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-12 text-center text-slate-400">
+            <i class="fa-solid fa-mobile-screen-button text-4xl mb-3"></i>
+            <p class="font-semibold text-sm">No smartphones matched your criteria.</p>
+            <button onclick="resetFilters()" class="mt-3 text-xs bg-brandYellow text-slate-900 font-bold px-4 py-2 rounded-lg">Reset Filters</button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(p => `
+        <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group">
+          <div class="p-4 relative">
+            
+            <!-- BADGES -->
+            <div class="flex justify-between items-start gap-1 mb-2">
+              <span class="bg-brandRed text-white text-[10px] font-extrabold px-2 py-0.5 rounded uppercase">${p.tag}</span>
+              ${p.express ? '<span class="bg-brandYellow text-slate-900 text-[10px] font-extrabold px-2 py-0.5 rounded">⚡ EXPRESS 24H</span>' : ''}
+            </div>
+
+            <!-- PRODUCT IMAGE -->
+            <div class="h-48 overflow-hidden rounded-xl mb-4 flex items-center justify-center bg-slate-50 dark:bg-slate-900 p-2">
+              <img src="${p.image}" alt="${p.title}" class="h-full object-contain group-hover:scale-105 transition-transform duration-300">
+            </div>
+
+            <!-- PRODUCT TITLE -->
+            <h3 class="font-bold text-sm text-slate-900 dark:text-white line-clamp-2 mb-2 leading-snug">${p.title}</h3>
+
+            <!-- RATING -->
+            <div class="flex items-center gap-1 text-amber-400 text-xs mb-3">
+              <i class="fa-solid fa-star"></i>
+              <span class="font-bold text-slate-700 dark:text-slate-300">${p.rating}</span>
+              <span class="text-slate-400 text-[10px]">(UAE Certified)</span>
+            </div>
+
+            <!-- PRICE DISPLAY -->
+            <div class="flex items-baseline gap-2">
+              <span class="text-lg font-black text-slate-900 dark:text-white">AED ${p.price.toLocaleString()}</span>
+              <span class="text-xs text-slate-400 line-through">AED ${p.wasPrice.toLocaleString()}</span>
+            </div>
+          </div>
+
+          <!-- ACTIONS -->
+          <div class="p-4 pt-0 flex gap-2">
+            <button onclick="openModal('${p.id}')" class="flex-1 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-800 dark:text-white font-bold text-xs py-2.5 rounded-xl transition-colors">
+              Quick Specs
+            </button>
+            <button onclick="addToCart('${p.id}')" class="bg-brandYellow hover:bg-yellow-400 text-slate-900 font-extrabold text-xs px-4 py-2.5 rounded-xl transition-colors flex items-center gap-1">
+              <i class="fa-solid fa-cart-plus"></i> Add
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // FILTER CATEGORY TAB QUICK SET
+    function setBrandFilter(brand) {
+      const checkboxes = document.querySelectorAll('.brand-checkbox');
+      checkboxes.forEach(cb => {
+        cb.checked = (brand === 'ALL' || cb.value === brand);
+      });
+      renderProducts();
+    }
+
+    // STORAGE FILTER TOGGLE
+    function toggleStorage(size) {
+      activeSelectedStorage = activeSelectedStorage === size ? null : size;
+      renderProducts();
+    }
+
+    // RESET FILTERS
+    function resetFilters() {
+      document.getElementById('searchInput').value = '';
+      if(document.getElementById('mobileSearchInput')) document.getElementById('mobileSearchInput').value = '';
+      document.getElementById('priceRange').value = 12000;
+      document.getElementById('expressToggle').checked = false;
+      activeSelectedStorage = null;
+      document.querySelectorAll('.brand-checkbox').forEach(cb => cb.checked = true);
+      updatePriceLabel();
+      renderProducts();
+    }
+
+    // QUICK SPECS MODAL
+    function openModal(id) {
+      const product = PRODUCTS.find(p => p.id === id);
+      if(!product) return;
+
+      const modal = document.getElementById('productModal');
+      const content = document.getElementById('modalContent');
+
+      content.innerHTML = `
+        <div class="bg-slate-100 dark:bg-slate-900 p-4 rounded-2xl flex items-center justify-center">
+          <img src="${product.image}" alt="${product.title}" class="max-h-64 object-contain">
+        </div>
+        <div class="flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-bold text-brandRed uppercase tracking-wider">${product.brand} Official</span>
+            <h2 class="text-xl font-black text-slate-900 dark:text-white mb-2">${product.title}</h2>
+            <div class="text-2xl font-black text-slate-900 dark:text-white mb-4">
+              AED ${product.price.toLocaleString()} <span class="text-xs text-slate-400 font-normal line-through">AED ${product.wasPrice.toLocaleString()}</span>
+            </div>
+            
+            <div class="space-y-2 text-xs text-slate-600 dark:text-slate-300 mb-6">
+              <div class="flex justify-between border-b dark:border-slate-700 py-1">
+                <span class="font-bold">Storage:</span> <span>${product.specs.storage}</span>
+              </div>
+              <div class="flex justify-between border-b dark:border-slate-700 py-1">
+                <span class="font-bold">RAM:</span> <span>${product.specs.ram}</span>
+              </div>
+              <div class="flex justify-between border-b dark:border-slate-700 py-1">
+                <span class="font-bold">Chipset:</span> <span>${product.specs.chip}</span>
+              </div>
+              <div class="flex justify-between border-b dark:border-slate-700 py-1">
+                <span class="font-bold">Color:</span> <span>${product.specs.color}</span>
+              </div>
+            </div>
+          </div>
+          <button onclick="addToCart('${product.id}'); closeModal();" class="w-full bg-brandYellow hover:bg-yellow-400 text-slate-900 font-extrabold py-3 rounded-xl text-xs transition-colors flex items-center justify-center gap-2">
+            <i class="fa-solid fa-bag-shopping"></i> Add to Mobi Store Bag
+          </button>
+        </div>
+      `;
+
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('productModal').classList.add('hidden');
+    }
+
+    // CART MANAGEMENT
+    function addToCart(id) {
+      const product = PRODUCTS.find(p => p.id === id);
+      const existing = cart.find(item => item.id === id);
+
+      if(existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ ...product, qty: 1 });
+      }
+
+      updateCart();
+      openCart();
+    }
+
+    function updateCart() {
+      const cartItemsContainer = document.getElementById('cartItems');
+      const badge = document.getElementById('cartBadge');
+      
+      const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      badge.innerText = totalCount;
+
+      if(cart.length === 0) {
+        cartItemsContainer.innerHTML = `
+          <div class="py-12 text-center text-slate-400">
+            <i class="fa-solid fa-bag-shopping text-4xl mb-3"></i>
+            <p class="font-semibold text-xs">Your shopping bag is currently empty.</p>
+          </div>
+        `;
+      } else {
+        cartItemsContainer.innerHTML = cart.map(item => `
+          <div class="flex gap-3 bg-slate-50 dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-700 items-center">
+            <img src="${item.image}" class="w-12 h-12 object-contain bg-white dark:bg-slate-800 p-1 rounded-lg">
+            <div class="flex-1">
+              <h4 class="font-bold text-xs text-slate-900 dark:text-white line-clamp-1">${item.title}</h4>
+              <div class="text-xs text-brandRed font-black">AED ${item.price.toLocaleString()}</div>
+            </div>
+            <div class="flex items-center gap-2 bg-white dark:bg-slate-800 px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-700 text-xs">
+              <button onclick="changeQty('${item.id}', -1)" class="font-bold text-slate-500">-</button>
+              <span class="font-bold text-slate-900 dark:text-white">${item.qty}</span>
+              <button onclick="changeQty('${item.id}', 1)" class="font-bold text-slate-500">+</button>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // CALCULATE TOTALS
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const vat = subtotal * 0.05;
+      const total = subtotal + vat;
+
+      document.getElementById('cartSubtotal').innerText = `AED ${subtotal.toLocaleString()}`;
+      document.getElementById('cartVat').innerText = `AED ${vat.toLocaleString()}`;
+      document.getElementById('cartTotal').innerText = `AED ${total.toLocaleString()}`;
+    }
+
+    function changeQty(id, delta) {
+      const item = cart.find(i => i.id === id);
+      if(!item) return;
+      item.qty += delta;
+      if(item.qty <= 0) {
+        cart = cart.filter(i => i.id !== id);
+      }
+      updateCart();
+    }
+
+    function openCart() {
+      document.getElementById('cartDrawer').classList.remove('translate-x-full');
+    }
+
+    function closeCart() {
+      document.getElementById('cartDrawer').classList.add('translate-x-full');
+    }
+
+    function applyPromo() {
+      const input = document.getElementById('promoInput').value.trim();
+      if(input === 'MOBI2026') {
+        alert('Promo Code Applied! AED 200 Discount Added.');
+      } else {
+        alert('Invalid Promo Code. Try MOBI2026');
+      }
+    }
+
+    function checkout() {
+      if(cart.length === 0) {
+        alert('Your bag is empty!');
+        return;
+      }
+      const trackingCode = 'MOBI-DXB-' + Math.floor(100000 + Math.random() * 900000);
+      alert(`Order Confirmed!\nTracking ID: ${trackingCode}\nThank you for shopping with Mobi Store UAE.`);
+      cart = [];
+      updateCart();
+      closeCart();
+    }
+  </script>
+</body>
+</html>
